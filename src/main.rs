@@ -29,14 +29,15 @@ fn get_input(prompt: &str) -> String {
     std::io::stdin().read_line(&mut buff).unwrap();
     buff.trim().to_string()
 }
+
 fn main() {
     let first_number_str = get_input("Enter the first number:");
-    let first_number: f64 = first_number_str.parse().expect("Invalid input");
+    let first_number: f64 = first_number_str.parse().expect("");
 
     let operation_symbol = get_input("Enter the operation (+, -, *, /):");
 
     let second_number_str = get_input("Enter the second number:");
-    let second_number: f64 = second_number_str.parse().expect("Invalid input");
+    let second_number: f64 = second_number_str.parse().expect("");
 
     let operation = match operation_symbol.as_str() {
         "+" => Operation::Add(first_number, second_number),
@@ -44,7 +45,7 @@ fn main() {
         "*" => Operation::Multiply(first_number, second_number),
         "/" => Operation::Divide(first_number, second_number),
         _ => {
-            println!("Invalid operation symbol. Please use one of +, -, *, /.");
+            println!("Invalid operation symbol! Please use one of +, -, *, /.");
             return;
         }
     };
